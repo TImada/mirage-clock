@@ -10,7 +10,9 @@
 (rule
  (target clock_stubs.c)
  (enabled_if
-  (<> %{context_name} "solo5"))
+  (and
+   (<> %{context_name} "solo5")
+   (<> %{context_name} "solo5-frt")))
  (deps
   (:src clock_stubs.default.c))
  (action
@@ -19,7 +21,9 @@
 (rule
  (target clock_stubs.c)
  (enabled_if
-  (= %{context_name} "solo5"))
+  (or
+   (= %{context_name} "solo5")
+   (= %{context_name} "solo5-frt")))
  (deps
   (:src clock_stubs.solo5.c))
  (action
